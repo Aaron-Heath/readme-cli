@@ -4,7 +4,56 @@ const inquierer = require('inquirer');
 const questions = [
 // GIVEN a command-line application that accepts user input
 // WHEN I enter my project title
-// THEN this is displayed as the title of the README
+    {
+        type: 'input',
+        name: 'ghUser',
+        message: "What is your GitHub username?"
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Enter your email address: '
+    },
+    {
+        type: 'input',
+        name: 'Title',
+        message: 'What is your README title?'
+    },
+    {
+        type: 'input',
+        name: 'Description',
+        message: 'What is the description of your project?'
+    },
+    {
+        type: 'input',
+        name: 'Usage Information',
+        message: 'What is the usage information?'
+    },
+    {
+        type: 'input',
+        name: 'Contribution Guidelines',
+        message: 'Describe the contribution guidelines.'
+    },
+    {
+        type: 'input',
+        name: 'Tests',
+        message: 'What are the testing instructions?'
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'What license would you like to use?',
+        choices: [
+            'Apache-2.0',
+            'MIT License',
+            'OSL-3.0',
+            'PostgreSQL',
+            'OFL-1.1',
+            'Unlicense'
+        ]
+    }
+
+
 // WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
 // THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
 // WHEN I choose a license for my application from a list of options
@@ -18,10 +67,17 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    // THEN this is displayed as the title of the README
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquierer.prompt(questions)
+    .then((answers) => {
+        console.log(answers);
+    })
+}
 
 // Function call to initialize app
 init();
