@@ -105,7 +105,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: '## Usage Information',
+        name: '## Usage',
         message: 'What is the usage information?'
     },
     {
@@ -144,7 +144,7 @@ function writeToFile(fileName, data) {
     // WHEN I click on the links in the Table of Contents
     // THEN I am taken to the corresponding section of the README
     finalMarkdown += 
-    "- [Description](#description)\n- [Installation](#installation)\n- [Usage](#usage)\n- [Contributing](#contributing)\n- [testing](#Testing)\n- [License](#license)";
+    "- [Description](#description)\n- [Installation](#installation)\n- [Usage](#usage)\n- [Contributing](#contributing)\n- [Testing](#testing)\n- [License](#license)";
 
     finalMarkdown += "\n";
 
