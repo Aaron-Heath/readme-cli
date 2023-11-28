@@ -115,7 +115,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: '## Tests',
+        name: '## Testing',
         message: 'What are the testing instructions?'
     },
     {
@@ -128,19 +128,9 @@ const questions = [
             'Unlicense'
         ]
     }
-
-
-// WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
-// THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
-// and a notice is added to the section of the README entitled License that explains which license the application is covered under
-// WHEN I enter my GitHub username
-// THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-// WHEN I enter my email address
-// THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-
 ];
 
-// TODO: Create a function to write README file
+
 function writeToFile(fileName, data) {
     let finalMarkdown = "";
     // WHEN I enter my project title
@@ -154,7 +144,7 @@ function writeToFile(fileName, data) {
     // WHEN I click on the links in the Table of Contents
     // THEN I am taken to the corresponding section of the README
     finalMarkdown += 
-    "- [Description](#Description)\n- [Installation](#Installation)\n- [Usage](#Usage)\n- [Contributing](#Contributing)\n- [Testing](#Testing)\n- [License](#License)";
+    "- [Description](#description)\n- [Installation](#installation)\n- [Usage](#usage)\n- [Contributing](#contributing)\n- [testing](#Testing)\n- [License](#license)";
 
     finalMarkdown += "\n";
 
@@ -168,7 +158,7 @@ function writeToFile(fileName, data) {
             finalMarkdown += `- GitHub Profile: [${data['ghUser']}](https://github.com/${data['ghUser']})\n`;
 
             // Insert github username and year into description for licenses.
-            finalMarkdown += licenses[data[key]].description.replace(['[fullname]'], data['ghUser']).replace('[year]', new Date().getFullYear());
+            finalMarkdown += key + "\n" + licenses[data[key]].description.replace(['[fullname]'], data['ghUser']).replace('[year]', new Date().getFullYear());
         }else {
             finalMarkdown += key + "\n" + data[key] + "\n";
         }
