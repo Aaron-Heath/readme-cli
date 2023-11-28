@@ -1,28 +1,26 @@
-# README CLI Application
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-- [Description](#description)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Testing](#testing)
-- [License](#license)
+# Readme CLI Application
 ## Description
-This application enables the user to quickly generate a README.md by completing the prompts.
+This application is a command line interface (CLI) tool that allows the user to quickly generate a README.md file based on their answers to a series of prompts in the command line.
+
+
 ## Installation
-Fork or clone this repository. Ensure that the inquirer package is installed.
+
+Fork or clone this repository to your local machine. You must ensure that the inquirer package is installed in order for the application to work properly.
+
 ## Usage
-From the root directory, run node index.js. Follow the prompts. The README.md will be generated in the root directory.
-## Contributing
+
+From the root directory, run node index.js to begin the series of prompts. Upon completion, the user will be informed that the README.md file was created. It will be found in the root directory. 
+
+<b>Any previous README.md files in that directory will be overwritten if they share the same name!</b>
+
+## Credits
+
 N/A
-## Testing
-N/A
-## Questions
-- How to contact me: aaron.heath5447@gmail.com
-- GitHub Profile: [Aaron-Heath](https://github.com/Aaron-Heath)
+
 ## License
 MIT License
 
-        Copyright (c) 2023 Aaron-Heath
+        Copyright (c) 2023 Aaron Heath
         
         Permission is hereby granted, free of charge, to any person obtaining a copy
         of this software and associated documentation files (the "Software"), to deal
