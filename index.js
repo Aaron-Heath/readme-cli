@@ -90,7 +90,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: '# Title',
+        name: 'Title',
         message: 'What is your README title?'
     },
     {
@@ -100,13 +100,18 @@ const questions = [
     },
     {
         type: 'input',
+        name: '## Installation',
+        message: 'Installation instructions:'
+    },
+    {
+        type: 'input',
         name: '## Usage Information',
         message: 'What is the usage information?'
     },
     {
         type: 'input',
-        name: '## Contribution Guidelines',
-        message: 'Describe the contribution guidelines.'
+        name: '## Contributing',
+        message: 'Contribution instructions:'
     },
     {
         type: 'input',
@@ -127,21 +132,50 @@ const questions = [
 
 // WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
 // THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
-// WHEN I choose a license for my application from a list of options
-// THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
+// and a notice is added to the section of the README entitled License that explains which license the application is covered under
 // WHEN I enter my GitHub username
 // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
 // WHEN I enter my email address
 // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-// WHEN I click on the links in the Table of Contents
-// THEN I am taken to the corresponding section of the README
+
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
+    let finalMarkdown = "";
     // WHEN I enter my project title
     // THEN this is displayed as the title of the README
+    finalMarkdown += `# ${data.Title}\n`
 
+    // WHEN I choose a license for my application from a list of options
+    // THEN a badge for that license is added near the top of the README
+    finalMarkdown += licenses[data['## License']].badge + "\n";
+
+    // WHEN I click on the links in the Table of Contents
+    // THEN I am taken to the corresponding section of the README
+    finalMarkdown += 
+    "- [Description](#Description)\n- [Installation](#Installation)\n- [Usage](#Usage)\n- [Contributing](#Contributing)\n- [Testing](#Testing)\n- [License](#License)";
+
+    finalMarkdown += "\n";
+
+    for(let key in data) {
+        if(key=== "# Title" || !key.startsWith("## ")) {
+            continue;
+        } else if (key === "## License") {
+            // Add questions section before License section
+            finalMarkdown += "## Questions\n";
+            finalMarkdown += `- How to contact me: ${data['email']}\n`;
+            finalMarkdown += `- GitHub Profile: [${data['ghUser']}](https://github.com/${data['ghUser']})\n`;
+
+            // Insert github username and year into description for licenses.
+            finalMarkdown += licenses[data[key]].description.replace(['[fullname]'], data['ghUser']).replace('[year]', new Date().getFullYear());
+        }else {
+            finalMarkdown += key + "\n" + data[key] + "\n";
+        }
+
+    }
+
+    fs.appendFile('README.md',finalMarkdown, (err) => err ? console.log(err) : console.log('Readme Created!'));
 }
 
 // TODO: Create a function to initialize app
